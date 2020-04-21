@@ -27,10 +27,11 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
- * 
+ * counter1 is returning a function counter2 is returning a value.
  * 2. Which of the two uses a closure? How can you tell?
- * 
+ * counter1 is using closure
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ * counter1 would be better if you need to keep a continuos count counter2 would be better for increment only once per invocation
  *
 */
 
@@ -54,17 +55,20 @@ function counter2() {
 
 /* Task 2: inning() 
 
-Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
+Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number
+ between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
+function inning(){
+console.log("in inning")
+  return Math.floor(Math.random() * 3);
 
 }
 
+
 /* Task 3: finalScore()
 
-Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and and returns the final score of the game in the form of an object.
+Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings 
+and and returns the final score of the game in the form of an object.
 
 For example, 
 
@@ -76,11 +80,27 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
+function finalScore(cb, innings){
+const home =[];
+const away =[];
+  for(let i =0; i < innings; i++){
+    home.push(cb());
+    away.push(cb());
+  }
+ 
+  const homeScore = home.reduce((total, amount) => total + amount,0); 
+  const awayScore = away.reduce((total, amount) => total + amount,0); 
+  const scores ={
+    home:0,
+    away:0
+  };
 
-  /*Code Here*/
-
+ scores.home = homeScore;
+ scores.away = awayScore;
+ 
+ return scores;
 }
+console.log(finalScore(inning, 9))
 
 /* Task 4: 
 
