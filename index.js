@@ -160,3 +160,13 @@ function scoreboard(cbInningScore, cbInning, numInnings) {
 }
 
 
+
+function createBase(input){
+  return function(number){
+    return input + number;
+  }
+}
+var addSix = createBase(6);
+addSix(10); // returns 16
+addSix(21); // returns 27
+console.log(addSix)
