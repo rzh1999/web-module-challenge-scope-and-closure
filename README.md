@@ -44,6 +44,8 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+Closure allows acces to data of parent in nested functions
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -65,7 +67,10 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+${name} because name is not inside the child function
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
 c. What is the lexical scope of `newRoll`? 
 
 ### Task 3 - Stretch Goals
@@ -87,6 +92,12 @@ console.log("b defined? " + (typeof b !== 'undefined'));
 2. Write a function that would allow you to do this using a closure. (This is another interview question we've seen before - when you're ready for answers, view an explanation [here](https://www.coderbyte.com/algorithm/3-common-javascript-closure-questions)).
 
 ```js
+
+function createBase(input){
+  return function(number){
+    return input + number;
+  }
+}
 var addSix = createBase(6);
 addSix(10); // returns 16
 addSix(21); // returns 27
@@ -94,6 +105,7 @@ addSix(21); // returns 27
 
 3. Research the differences between functional programming and object oriented programming. Then, describe the pros and cons of functional programming vs object-oriented programming. This is a common interview question and great practice!
 
+Functional programming is used for performing many different operations for which the data is fixed. ... Functional programming is having a stateless programming model. Object-oriented programming is having a stateful programming model.
 ## Resources
 
 📚 [Scope and Closures Guide](https://css-tricks.com/javascript-scope-closures/)
